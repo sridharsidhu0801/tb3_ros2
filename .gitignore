@@ -1,0 +1,38 @@
+# ROS build artifacts
+build/
+install/
+log/
+
+# openCR firware# ROS build artifacts
+build/
+install/
+log/
+
+# OpenCR firmware files
+opencr_update/
+opencr_update.tar.bz2
+
+# Python
+__pycache__/
+*.pyc
+
+# Editors
+.vscode/
+.idea/
+
+# Misc
+*.swp
+*~
+.DS_Store
+
+*.pyc
+__pycache__/
+*.pyo
+
+.vscode/
+.idea/
+
+*.swp
+*~
+
+.DS_Store
