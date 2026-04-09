@@ -8,7 +8,7 @@ class CmdVelWatchdog(Node):
         super().__init__('cmd_vel_watchdog')
 
         self.declare_parameter('input_topic', '/tb1/cmd_vel_raw')
-        self.declare_parameter('output_topic', '/tb1/cmd_vel')
+        self.declare_parameter('output_topic', '/tb1/cmd_vel_watchdog')
         self.declare_parameter('timeout_sec', 0.5)
         self.declare_parameter('publish_rate', 20.0)
 
