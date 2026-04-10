@@ -5,7 +5,7 @@ The original work is licensed under the Apache License, Version 2.0.
 
 ### Modifications
 The following changes were implemented for this research:
-* Developed a custom `cmd_vel` watchdog for TB4.
+* Developed a custom `cmd_vel` watchdog for TB3 burger.
 * Integrated and tuned a velocity smoother for indoor navigation.
 * Created specialized ROS2 launch configurations for single-agent deployment.
 
