@@ -84,7 +84,7 @@ def generate_launch_description():
     # Lifecycle activation
     # -------------------------------
     configure_node = TimerAction(
-        period = 8.0,
+        period = 6.0,
         actions=[
             ExecuteProcess(
                 cmd=['ros2', 'lifecycle', 'set', f'/{namespace}/velocity_smoother', 'configure'],
