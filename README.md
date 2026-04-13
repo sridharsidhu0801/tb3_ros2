@@ -1,6 +1,6 @@
 ## License & Attribution
 
-This project contains code modified from [Original Repo Name/Author Link]. 
+This project contains code modified from [ROBOTIS TurtleBot3 ROS2 Repository](https://github.com/ROBOTIS-GIT/turtlebot3). 
 The original work is licensed under the Apache License, Version 2.0.
 
 ### Modifications
@@ -10,4 +10,4 @@ The following changes were implemented for this research:
 * Created specialized ROS2 launch configurations for single-agent deployment.
 
 ### Original Work
-A copy of the original Apache 2.0 license is included in the `LICENSE` file.
+The original packages were developed by **ROBOTIS Co., Ltd.** A copy of the original Apache 2.0 license is included in the `LICENSE` file.
