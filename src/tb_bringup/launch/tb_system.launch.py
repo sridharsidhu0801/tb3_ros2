@@ -17,16 +17,21 @@
 # Authors: Sridhar Babu Mudhangulla
 
 from launch import LaunchDescription
-from launch.actions import IncludeLaunchDescription, ExecuteProcess, TimerAction
+from launch.actions import (
+    IncludeLaunchDescription,
+    ExecuteProcess,
+    TimerAction,
+    DeclareLaunchArgument,
+)
 from launch.launch_description_sources import PythonLaunchDescriptionSource
-from launch_ros.actions import Node
+from launch.substitutions import LaunchConfiguration, PathJoinSubstitution
+from launch_ros.actions import Node, PushRosNamespace
 from ament_index_python.packages import get_package_share_directory
 import os
 
-
 def generate_launch_description():
 
-    namespace = "tb1"
+    namespace = LaunchConfiguration('namespace')
 
     # -------------------------------
     # TurtleBot bringup (include)
@@ -58,8 +63,8 @@ def generate_launch_description():
         name="cmd_vel_watchdog",
         parameters=[
             {
-                "input_topic": f"/{namespace}/cmd_vel_raw",
-                "output_topic": f"/{namespace}/cmd_vel_watchdog",
+                "input_topic": "cmd_vel_raw",
+                "output_topic": "cmd_vel_watchdog",
                 "timeout_sec": 0.5,
                 "publish_rate": 20.0,
             }
@@ -75,8 +80,8 @@ def generate_launch_description():
         name="velocity_smoother",
         parameters=[config_file],
         remappings=[
-            ("cmd_vel", f"/{namespace}/cmd_vel_watchdog"),
-            ("cmd_vel_smoothed", f"/{namespace}/cmd_vel"),
+            ("cmd_vel", "cmd_vel_watchdog"),
+            ("cmd_vel_smoothed", "cmd_vel"),
         ],
     )
 
@@ -87,7 +92,8 @@ def generate_launch_description():
         period = 6.0,
         actions=[
             ExecuteProcess(
-                cmd=['ros2', 'lifecycle', 'set', f'/{namespace}/velocity_smoother', 'configure'],
+                cmd=['ros2', 'lifecycle', 'set', 
+                    PathJoinSubstitution(['/', namespace, 'velocity_smoother']), 'configure'],
                 output='screen'
             )
         ]
@@ -96,7 +102,7 @@ def generate_launch_description():
         period=10.0,
         actions=[
             ExecuteProcess(
-                cmd=['ros2', 'lifecycle', 'set', f'/{namespace}/velocity_smoother', 'activate'],
+                cmd=['ros2', 'lifecycle', 'set', PathJoinSubstitution(['/', namespace, 'velocity_smoother']), 'activate'],
                 output='screen'
             )
         ]
