@@ -94,7 +94,7 @@ def generate_launch_description():
 
         DeclareLaunchArgument(
             'namespace',
-            default_value='tb1',
+            default_value='',
             description='Namespace for nodes'),
 
         PushRosNamespace(namespace),
